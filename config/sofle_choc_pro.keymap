@@ -31,6 +31,19 @@
     };
   };
 
+  // ESC (Position 0) + TAB (Position 12), beide oben links auf der
+  // linken (USB-)Haelfte, entsperren ZMK Studio. Grosszuegiges Timeout,
+  // damit die Kombi leicht auszuloesen ist; versehentliches Ausloesen
+  // praktisch unmoeglich (ESC+TAB tippt man nie zusammen).
+  combos {
+    compatible = "zmk,combos";
+    combo_studio_unlock {
+      timeout-ms = <200>;
+      key-positions = <0 12>;
+      bindings = <&studio_unlock>;
+    };
+  };
+
   keymap {
     compatible = "zmk,keymap";
 
