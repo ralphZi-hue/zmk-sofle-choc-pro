@@ -62,7 +62,10 @@
       tapping-term-ms = <250>;
       quick-tap-ms = <175>;
       flavor = "tap-preferred";
-      bindings = <&kp>, <&kp>;
+      // Hold tippt das Zeichen nur EINMAL kurz an (&tap1) statt es zu
+      // halten -- sonst oeffnet macOS bei Zeichen mit Akzent-Varianten
+      // (z.B. oe) das Press-and-Hold-Popup statt das Zeichen zu setzen.
+      bindings = <&tap1>, <&kp>;
     };
     // Halten = Makro "Ralph", Tippen = R. Aufruf: &rh 0 R
     rh: ralph_hold {
@@ -80,6 +83,16 @@
   // @=Alt+L, .=DOT), damit auf Mac/iPad/iPhone mit deutscher
   // Hardware-Tastatur "ziegenhorn@me.com" korrekt herauskommt.
   macros {
+    // Tippt seinen Parameter genau einmal an (press+release sofort).
+    // Wird vom Umlaut-Hold-Tap benutzt, damit kein Press-and-Hold-Popup entsteht.
+    tap1: tap_once {
+      compatible = "zmk,behavior-macro-one-param";
+      #binding-cells = <1>;
+      bindings
+        = <&macro_param_1to1>
+        , <&macro_tap &kp MACRO_PLACEHOLDER>;
+    };
+
     email: email {
       compatible = "zmk,behavior-macro";
       #binding-cells = <0>;
