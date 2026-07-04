@@ -44,6 +44,23 @@
     };
   };
 
+  // Makro: tippt Ralphs E-Mail-Adresse (Lower + M, "M" wie eMail).
+  // Die Keycodes sind fuer das deutsche Layout "verdreht" (z=Y-Taste,
+  // @=Alt+L, .=DOT), damit auf Mac/iPad/iPhone mit deutscher
+  // Hardware-Tastatur "ziegenhorn@me.com" korrekt herauskommt.
+  macros {
+    email: email {
+      compatible = "zmk,behavior-macro";
+      #binding-cells = <0>;
+      wait-ms = <10>;
+      tap-ms = <10>;
+      bindings
+        = <&kp Y &kp I &kp E &kp G &kp E &kp N &kp H &kp O &kp R &kp N>
+        , <&kp LA(L)>
+        , <&kp M &kp E &kp DOT &kp C &kp O &kp M>;
+    };
+  };
+
   keymap {
     compatible = "zmk,keymap";
 
@@ -80,7 +97,7 @@
         &trans    &kp F1    &kp F2          &kp F3    &kp F4    &kp F5                     &kp F6     &kp F7     &kp F8     &kp F9          &kp F10    &kp F11
         &kp GRAVE &kp N1    &kp N2          &kp N3    &kp N4    &kp N5                     &kp N6     &kp N7     &kp N8     &kp N9          &kp N0     &kp EQUAL
         &trans    &kp LA(L) &kp MINUS       &kp LA(E) &trans    &trans                     &kp LA(N5) &kp LA(N6) &kp LA(N8) &kp LA(N9)      &kp LA(N7) &kp LA(LS(N7))
-        &trans    &kp LA(N) &kp NON_US_BSLH &trans    &trans    &trans   &trans &trans     &trans     &trans     &kp RBKT   &kp NON_US_HASH &trans     &trans
+        &trans    &kp LA(N) &kp NON_US_BSLH &trans    &trans    &trans   &trans &trans     &trans     &email     &kp RBKT   &kp NON_US_HASH &trans     &trans
         &trans    &trans    &trans          &trans    &trans  &trans     &trans &trans     &trans     &trans
       >;
 
