@@ -155,9 +155,12 @@
       // | CAPS  |  A  |  S  |  D   |  F   |  G   |                   |  H   |  J    |  K    |  L   |   #   | BKSPC |
       // | SHIFT |  Y  |  X  |  C   |  V   |  B   |  MUTE  |  | PLAY  |  N   |  M    |  ,    |  .   |   -   | SHIFT |
       //               | CTRL| ALT  | CMD  | LOWER|  ENTER |  | SPACE | RAISE| CMD   | ALT   | CTRL |
+      // TEMP-DIAGNOSE (2026-07-04): Mondtaste + "+/*"-Taste testweise auf &kp A,
+      // um zu pruefen ob die Matrix den Tastendruck ueberhaupt registriert.
+      // Nach dem Test wieder auf LG(LC(Q)) bzw. RBKT zurueckstellen!
       bindings = <
-        &kp ESC   &kp N1 &kp N2   &kp N3   &kp N4    &kp N5                           &kp N6 &kp N7      &kp N8    &kp N9      &kp N0   &kp LG(LC(Q))
-        &kp TAB   &kp Q  &kp W    &hu LA(E) E &rh 0 R &kp T                           &kp Y  &hu LBKT U  &kp I     &hu SEMI O  &kp P    &kp RBKT
+        &kp ESC   &kp N1 &kp N2   &kp N3   &kp N4    &kp N5                           &kp N6 &kp N7      &kp N8    &kp N9      &kp N0   &kp A
+        &kp TAB   &kp Q  &kp W    &hu LA(E) E &rh 0 R &kp T                           &kp Y  &hu LBKT U  &kp I     &hu SEMI O  &kp P    &kp A
         &kp CAPS  &hu SQT A &hu MINUS S &kp D &kp F  &kp G                            &kp H  &kp J       &kp K     &kp L       &kp NON_US_HASH &kp BSPC
         &mo LOWER &kp Z  &kp X    &kp C    &kp V     &kp B   &kp C_MUTE &kp C_PLAY    &kp N  &kp M     &kp COMMA &kp DOT  &kp FSLH &mo RAISE
         &kp LCTRL &kp LALT &kp LGUI &kp LSHFT  &kp RET    &kp SPACE  &kp RSHFT  &kp RGUI &kp RALT  &kp RCTRL
