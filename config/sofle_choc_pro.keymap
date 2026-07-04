@@ -54,12 +54,29 @@
       #binding-cells = <0>;
       wait-ms = <30>;
       tap-ms = <30>;
+      // Nach macro_release muss explizit wieder in den Tap-Modus
+      // gewechselt werden, sonst werden die restlichen Zeichen nur
+      // "losgelassen" statt getippt.
       bindings
         = <&kp Y &kp I &kp E &kp G &kp E &kp N &kp H &kp O &kp R &kp N>
         , <&macro_press &kp LALT>
         , <&macro_tap &kp L>
         , <&macro_release &kp LALT>
-        , <&kp M &kp E &kp DOT &kp C &kp O &kp M>;
+        , <&macro_tap &kp M &kp E &kp DOT &kp C &kp O &kp M>;
+    };
+
+    // @ als eigenes Makro (Option gedrueckt halten, L tippen) --
+    // derselbe Mechanismus, der im E-Mail-Makro nachweislich
+    // funktioniert. Liegt auf Lower+A.
+    at_sign: at_sign {
+      compatible = "zmk,behavior-macro";
+      #binding-cells = <0>;
+      wait-ms = <30>;
+      tap-ms = <30>;
+      bindings
+        = <&macro_press &kp LALT>
+        , <&macro_tap &kp L>
+        , <&macro_release &kp LALT>;
     };
   };
 
@@ -98,7 +115,7 @@
       bindings = <
         &trans    &kp F1    &kp F2          &kp F3    &kp F4    &kp F5                     &kp F6     &kp F7     &kp F8     &kp F9          &kp F10    &kp F11
         &kp GRAVE &kp N1    &kp N2          &kp N3    &kp N4    &kp N5                     &kp N6     &kp N7     &kp N8     &kp N9          &kp N0     &kp EQUAL
-        &trans    &kp LA(L) &kp MINUS       &kp LA(E) &trans    &trans                     &kp LA(N5) &kp LA(N6) &kp LA(N8) &kp LA(N9)      &kp LA(N7) &kp LA(LS(N7))
+        &trans    &at_sign  &kp MINUS       &kp LA(E) &trans    &trans                     &kp LA(N5) &kp LA(N6) &kp LA(N8) &kp LA(N9)      &kp LA(N7) &kp LA(LS(N7))
         &trans    &kp LA(N) &kp NON_US_BSLH &trans    &trans    &trans   &trans &trans     &trans     &email     &kp RBKT   &kp NON_US_HASH &trans     &trans
         &trans    &trans    &trans          &trans    &trans  &trans     &trans &trans     &trans     &trans
       >;
