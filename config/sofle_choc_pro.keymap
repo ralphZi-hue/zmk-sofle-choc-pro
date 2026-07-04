@@ -42,6 +42,12 @@
       key-positions = <0 12>;
       bindings = <&studio_unlock>;
     };
+    // R (Pos 16) + z-Taste (Pos 18) gleichzeitig -> "Ralph Ziegenhorn"
+    combo_ralph_zieg {
+      timeout-ms = <60>;
+      key-positions = <16 18>;
+      bindings = <&ralph_zieg>;
+    };
   };
 
   // Hold-Tap fuer Umlaute: kurz tippen = Buchstabe, halten (250ms) = Umlaut.
@@ -57,6 +63,15 @@
       quick-tap-ms = <175>;
       flavor = "tap-preferred";
       bindings = <&kp>, <&kp>;
+    };
+    // Halten = Makro "Ralph", Tippen = R. Aufruf: &rh 0 R
+    rh: ralph_hold {
+      compatible = "zmk,behavior-hold-tap";
+      #binding-cells = <2>;
+      tapping-term-ms = <250>;
+      quick-tap-ms = <175>;
+      flavor = "tap-preferred";
+      bindings = <&ralph>, <&kp>;
     };
   };
 
@@ -94,6 +109,25 @@
         , <&macro_tap &kp L>
         , <&macro_release &kp LALT>;
     };
+
+    // "Ralph" (Halten von R). Grosses R via Shift.
+    ralph: ralph {
+      compatible = "zmk,behavior-macro";
+      #binding-cells = <0>;
+      wait-ms = <5>;
+      tap-ms = <5>;
+      bindings = <&macro_tap &kp LS(R) &kp A &kp L &kp P &kp H>;
+    };
+
+    // "Ralph Ziegenhorn" (Combo R+Z). z wird auf Deutsch von der
+    // Y-Taste erzeugt, grosses Z daher LS(Y).
+    ralph_zieg: ralph_zieg {
+      compatible = "zmk,behavior-macro";
+      #binding-cells = <0>;
+      wait-ms = <5>;
+      tap-ms = <5>;
+      bindings = <&macro_tap &kp LS(R) &kp A &kp L &kp P &kp H &kp SPACE &kp LS(Y) &kp I &kp E &kp G &kp E &kp N &kp H &kp O &kp R &kp N>;
+    };
   };
 
   keymap {
@@ -109,10 +143,10 @@
       // | SHIFT |  Y  |  X  |  C   |  V   |  B   |  MUTE  |  | PLAY  |  N   |  M    |  ,    |  .   |   -   | SHIFT |
       //               | CTRL| ALT  | CMD  | LOWER|  ENTER |  | SPACE | RAISE| CMD   | ALT   | CTRL |
       bindings = <
-        &kp ESC   &kp N1 &kp N2   &kp N3   &kp N4    &kp N5                           &kp N6 &kp N7      &kp N8    &kp N9      &kp N0   &kp BSPC
-        &kp TAB   &kp Q  &kp W    &kp E    &kp R     &kp T                            &kp Y  &hu LBKT U  &kp I     &hu SEMI O  &kp P    &kp LBKT
-        &kp CAPS  &hu SQT A &kp S &kp D    &kp F     &kp G                            &kp H  &kp J       &kp K     &kp L       &kp SEMI &kp SQT
-        &kp LSHFT &kp Z  &kp X    &kp C    &kp V     &kp B   &kp C_MUTE &kp C_PLAY    &kp N  &kp M     &kp COMMA &kp DOT  &kp FSLH &kp RSHFT
+        &hu LS(GRAVE) ESC &kp N1 &kp N2 &kp N3 &kp N4 &kp N5                          &kp N6 &kp N7      &kp N8    &kp N9      &kp N0   &kp LG(LC(Q))
+        &kp TAB   &kp Q  &kp W    &hu LA(E) E &rh 0 R &kp T                           &kp Y  &hu LBKT U  &kp I     &hu SEMI O  &kp P    &kp RBKT
+        &kp CAPS  &hu SQT A &hu MINUS S &kp D &kp F  &kp G                            &kp H  &kp J       &kp K     &kp L       &kp NON_US_HASH &kp BSPC
+        &kp LSHFT &kp Z  &kp X    &kp C    &kp V     &kp B   &kp C_MUTE &kp C_PLAY    &kp N  &kp M     &kp COMMA &kp DOT  &kp FSLH &mo RAISE
         &kp LCTRL &kp LALT &kp LGUI &mo LOWER  &kp RET    &kp SPACE  &mo RAISE  &kp RGUI &kp RALT  &kp RCTRL
       >;
 
@@ -132,7 +166,7 @@
         &trans    &kp F1    &kp F2          &kp F3    &kp F4    &kp F5                     &kp F6     &kp F7     &kp F8     &kp F9          &kp F10    &kp F11
         &kp GRAVE &kp N1    &kp N2          &kp N3    &kp N4    &kp N5                     &kp N6     &kp N7     &kp N8     &kp N9          &kp N0     &kp EQUAL
         &trans    &at_sign  &kp MINUS       &kp LA(E) &trans    &trans                     &kp LA(N5) &kp LA(N6) &kp LA(N8) &kp LA(N9)      &kp LA(N7) &kp LA(LS(N7))
-        &trans    &kp LA(N) &kp NON_US_BSLH &trans    &trans    &trans   &trans &trans     &trans     &email     &kp RBKT   &kp NON_US_HASH &trans     &trans
+        &trans    &kp NON_US_BSLH &kp LA(N) &trans    &trans    &trans   &trans &trans     &trans     &email     &kp RBKT   &kp NON_US_HASH &trans     &trans
         &trans    &trans    &trans          &trans    &trans  &trans     &trans &trans     &trans     &trans
       >;
 
