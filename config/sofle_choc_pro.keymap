@@ -52,11 +52,13 @@
     email: email {
       compatible = "zmk,behavior-macro";
       #binding-cells = <0>;
-      wait-ms = <10>;
-      tap-ms = <10>;
+      wait-ms = <30>;
+      tap-ms = <30>;
       bindings
         = <&kp Y &kp I &kp E &kp G &kp E &kp N &kp H &kp O &kp R &kp N>
-        , <&kp LA(L)>
+        , <&macro_press &kp LALT>
+        , <&macro_tap &kp L>
+        , <&macro_release &kp LALT>
         , <&kp M &kp E &kp DOT &kp C &kp O &kp M>;
     };
   };
