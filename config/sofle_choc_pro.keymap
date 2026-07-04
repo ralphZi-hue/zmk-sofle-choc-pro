@@ -150,9 +150,9 @@
       display-name = "default";
       // Ausgabe auf dem Mac (Eingabequelle Deutsch):
       // ------------------------------------------------------------------------------------------------------------
-      // |  ESC  |  1  |  2  |  3   |  4   |  5   |                   |  6   |  7    |  8    |  9   |   0   | BKSPC |
-      // |  TAB  |  Q  |  W  |  E   |  R   |  T   |                   |  Z   |  U    |  I    |  O   |   P   |   UE  |
-      // | CAPS  |  A  |  S  |  D   |  F   |  G   |                   |  H   |  J    |  K    |  L   |   OE  |   AE  |
+      // |  ESC  |  1  |  2  |  3   |  4   |  5   |                   |  6   |  7    |  8    |  9   |   0   |  LOCK |
+      // |  TAB  |  Q  |  W  |  E   |  R   |  T   |                   |  Z   |  U    |  I    |  O   |   P   |  +/*  |
+      // | CAPS  |  A  |  S  |  D   |  F   |  G   |                   |  H   |  J    |  K    |  L   |   #   | BKSPC |
       // | SHIFT |  Y  |  X  |  C   |  V   |  B   |  MUTE  |  | PLAY  |  N   |  M    |  ,    |  .   |   -   | SHIFT |
       //               | CTRL| ALT  | CMD  | LOWER|  ENTER |  | SPACE | RAISE| CMD   | ALT   | CTRL |
       bindings = <
