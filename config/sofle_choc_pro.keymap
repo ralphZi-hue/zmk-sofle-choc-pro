@@ -110,6 +110,19 @@
       key-positions = <18 45>;
       bindings = <&syl_zusam>;
     };
+
+    // 1+2+3+4 gleichzeitig -> Code "28294721" + Enter
+    combo_code1 {
+      timeout-ms = <200>;
+      key-positions = <1 2 3 4>;
+      bindings = <&code_28294721>;
+    };
+    // 6+7+8+9 gleichzeitig -> "Road2$§" + Enter
+    combo_code2 {
+      timeout-ms = <200>;
+      key-positions = <6 7 8 9>;
+      bindings = <&code_road2>;
+    };
   };
 
   // Hold-Tap fuer Umlaute: kurz tippen = Buchstabe, halten (250ms) = Umlaut.
@@ -286,6 +299,23 @@
       wait-ms = <5>;
       tap-ms = <5>;
       bindings = <&macro_tap &kp Y &kp U &kp S &kp A &kp M>;
+    };
+
+    // Code-Makros (1+2+3+4 bzw. 6+7+8+9). $ = Shift+4, § = Shift+3
+    // (deutsches Layout, empirisch bestaetigt).
+    code_28294721: code_28294721 {
+      compatible = "zmk,behavior-macro";
+      #binding-cells = <0>;
+      wait-ms = <5>;
+      tap-ms = <5>;
+      bindings = <&macro_tap &kp N2 &kp N8 &kp N2 &kp N9 &kp N4 &kp N7 &kp N2 &kp N1 &kp RET>;
+    };
+    code_road2: code_road2 {
+      compatible = "zmk,behavior-macro";
+      #binding-cells = <0>;
+      wait-ms = <5>;
+      tap-ms = <5>;
+      bindings = <&macro_tap &kp LS(R) &kp O &kp A &kp D &kp N2 &kp LS(N4) &kp LS(N3) &kp RET>;
     };
 
     // Layer-Farbe: Halten faerbt Underglow ein, Loslassen zurueck auf Weiss (Base).
