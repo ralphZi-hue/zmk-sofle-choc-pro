@@ -48,6 +48,12 @@
       key-positions = <36 49>;
       bindings = <&adjust_rgb>;
     };
+    // V (Pos 40) + G (Pos 29) gleichzeitig -> "Viele Grüße" + Zeilenumbruch
+    combo_viele_gruesse {
+      timeout-ms = <60>;
+      key-positions = <29 40>;
+      bindings = <&viele_gruesse>;
+    };
   };
 
   // Hold-Tap fuer Umlaute: kurz tippen = Buchstabe, halten (250ms) = Umlaut.
@@ -140,6 +146,16 @@
       wait-ms = <5>;
       tap-ms = <5>;
       bindings = <&macro_tap &kp LS(R) &kp A &kp L &kp P &kp H &kp SPACE &kp LS(Y) &kp I &kp E &kp G &kp E &kp N &kp H &kp O &kp R &kp N>;
+    };
+
+    // "Viele Grüße" + Zeilenumbruch (Combo V+G). ü=LBKT, ß=MINUS (deutsche
+    // Positions-Codes, siehe Umlaut-Mapping-Tabelle in der README).
+    viele_gruesse: viele_gruesse {
+      compatible = "zmk,behavior-macro";
+      #binding-cells = <0>;
+      wait-ms = <5>;
+      tap-ms = <5>;
+      bindings = <&macro_tap &kp LS(V) &kp I &kp E &kp L &kp E &kp SPACE &kp LS(G) &kp R &kp LBKT &kp MINUS &kp E &kp RET>;
     };
 
     // Layer-Farbe: Halten faerbt Underglow ein, Loslassen zurueck auf Weiss (Base).
