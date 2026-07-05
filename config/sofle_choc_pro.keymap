@@ -134,7 +134,7 @@
     hu: hold_umlaut {
       compatible = "zmk,behavior-hold-tap";
       #binding-cells = <2>;
-      tapping-term-ms = <250>;
+      tapping-term-ms = <350>;
       quick-tap-ms = <175>;
       flavor = "tap-preferred";
       // Hold tippt das Zeichen nur EINMAL kurz an (&tap1) statt es zu
@@ -146,7 +146,7 @@
     rh: ralph_hold {
       compatible = "zmk,behavior-hold-tap";
       #binding-cells = <2>;
-      tapping-term-ms = <250>;
+      tapping-term-ms = <350>;
       quick-tap-ms = <175>;
       flavor = "tap-preferred";
       bindings = <&ralph>, <&kp>;
