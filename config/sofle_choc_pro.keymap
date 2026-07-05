@@ -315,7 +315,7 @@
       #binding-cells = <0>;
       wait-ms = <5>;
       tap-ms = <5>;
-      bindings = <&macro_tap &kp LS(R) &kp O &kp A &kp D &kp N2 &kp LS(N4) &kp LS(N3) &kp RET>;
+      bindings = <&macro_tap &kp LS(R) &kp O &kp A &kp D &kp N2 &kp LS(N4) &kp RET>;
     };
 
     // Layer-Farbe: Halten faerbt Underglow ein, Loslassen zurueck auf Weiss (Base).
