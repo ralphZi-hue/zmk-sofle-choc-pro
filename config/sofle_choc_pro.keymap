@@ -49,8 +49,10 @@
       bindings = <&adjust_rgb>;
     };
     // V (Pos 40) + G (Pos 29) gleichzeitig -> "Viele Grüße" + Zeilenumbruch
+    // Grosszuegiges Timeout (wie Studio-Unlock), da V/G mit unterschiedlichen
+    // Fingern oft nicht exakt gleichzeitig gedrueckt werden.
     combo_viele_gruesse {
-      timeout-ms = <60>;
+      timeout-ms = <180>;
       key-positions = <29 40>;
       bindings = <&viele_gruesse>;
     };
