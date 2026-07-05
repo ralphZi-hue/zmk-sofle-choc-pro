@@ -56,6 +56,60 @@
       key-positions = <29 40>;
       bindings = <&viele_gruesse>;
     };
+
+    // Silben-Combos: erster+letzter Buchstabe der Silbe (bei Kollision
+    // anderer markanter Buchstabe). 180ms Timeout wie oben, da unterschiedliche
+    // Finger selten exakt gleichzeitig sind.
+    combo_lich {
+      timeout-ms = <180>;
+      key-positions = <20 33>;
+      bindings = <&syl_lich>;
+    };
+    combo_chen {
+      timeout-ms = <180>;
+      key-positions = <39 44>;
+      bindings = <&syl_chen>;
+    };
+    combo_heit {
+      timeout-ms = <180>;
+      key-positions = <17 30>;
+      bindings = <&syl_heit>;
+    };
+    combo_keit {
+      timeout-ms = <180>;
+      key-positions = <17 32>;
+      bindings = <&syl_keit>;
+    };
+    combo_tion {
+      timeout-ms = <180>;
+      key-positions = <17 44>;
+      bindings = <&syl_tion>;
+    };
+    combo_ueber {
+      timeout-ms = <180>;
+      key-positions = <15 19>;
+      bindings = <&syl_ueber>;
+    };
+    combo_unter {
+      timeout-ms = <180>;
+      key-positions = <17 19>;
+      bindings = <&syl_unter>;
+    };
+    combo_gegen {
+      timeout-ms = <180>;
+      key-positions = <29 44>;
+      bindings = <&syl_gegen>;
+    };
+    combo_eigen {
+      timeout-ms = <180>;
+      key-positions = <15 29>;
+      bindings = <&syl_eigen>;
+    };
+    combo_zusam {
+      timeout-ms = <180>;
+      key-positions = <18 45>;
+      bindings = <&syl_zusam>;
+    };
   };
 
   // Hold-Tap fuer Umlaute: kurz tippen = Buchstabe, halten (250ms) = Umlaut.
@@ -158,6 +212,80 @@
       wait-ms = <5>;
       tap-ms = <5>;
       bindings = <&macro_tap &kp LS(V) &kp I &kp E &kp L &kp E &kp SPACE &kp LS(G) &kp R &kp LBKT &kp MINUS &kp E &kp RET>;
+    };
+
+    // Silben-Makros (Suffixe/Praefixe), alle klein geschrieben, kein
+    // Leerzeichen/Zeilenumbruch -- werden direkt an den Wortanfang/-ende
+    // angehaengt. LBKT=ü.
+    syl_lich: syl_lich {
+      compatible = "zmk,behavior-macro";
+      #binding-cells = <0>;
+      wait-ms = <5>;
+      tap-ms = <5>;
+      bindings = <&macro_tap &kp L &kp I &kp C &kp H>;
+    };
+    syl_chen: syl_chen {
+      compatible = "zmk,behavior-macro";
+      #binding-cells = <0>;
+      wait-ms = <5>;
+      tap-ms = <5>;
+      bindings = <&macro_tap &kp C &kp H &kp E &kp N>;
+    };
+    syl_heit: syl_heit {
+      compatible = "zmk,behavior-macro";
+      #binding-cells = <0>;
+      wait-ms = <5>;
+      tap-ms = <5>;
+      bindings = <&macro_tap &kp H &kp E &kp I &kp T>;
+    };
+    syl_keit: syl_keit {
+      compatible = "zmk,behavior-macro";
+      #binding-cells = <0>;
+      wait-ms = <5>;
+      tap-ms = <5>;
+      bindings = <&macro_tap &kp K &kp E &kp I &kp T>;
+    };
+    syl_tion: syl_tion {
+      compatible = "zmk,behavior-macro";
+      #binding-cells = <0>;
+      wait-ms = <5>;
+      tap-ms = <5>;
+      bindings = <&macro_tap &kp T &kp I &kp O &kp N>;
+    };
+    syl_ueber: syl_ueber {
+      compatible = "zmk,behavior-macro";
+      #binding-cells = <0>;
+      wait-ms = <5>;
+      tap-ms = <5>;
+      bindings = <&macro_tap &kp LBKT &kp B &kp E &kp R>;
+    };
+    syl_unter: syl_unter {
+      compatible = "zmk,behavior-macro";
+      #binding-cells = <0>;
+      wait-ms = <5>;
+      tap-ms = <5>;
+      bindings = <&macro_tap &kp U &kp N &kp T &kp E &kp R>;
+    };
+    syl_gegen: syl_gegen {
+      compatible = "zmk,behavior-macro";
+      #binding-cells = <0>;
+      wait-ms = <5>;
+      tap-ms = <5>;
+      bindings = <&macro_tap &kp G &kp E &kp G &kp E &kp N>;
+    };
+    syl_eigen: syl_eigen {
+      compatible = "zmk,behavior-macro";
+      #binding-cells = <0>;
+      wait-ms = <5>;
+      tap-ms = <5>;
+      bindings = <&macro_tap &kp E &kp I &kp G &kp E &kp N>;
+    };
+    syl_zusam: syl_zusam {
+      compatible = "zmk,behavior-macro";
+      #binding-cells = <0>;
+      wait-ms = <5>;
+      tap-ms = <5>;
+      bindings = <&macro_tap &kp Y &kp U &kp S &kp A &kp M>;
     };
 
     // Layer-Farbe: Halten faerbt Underglow ein, Loslassen zurueck auf Weiss (Base).
