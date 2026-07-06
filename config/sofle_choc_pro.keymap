@@ -56,6 +56,12 @@
       key-positions = <29 40>;
       bindings = <&viele_gruesse>;
     };
+    // G (Pos 29) + M (Pos 45) gleichzeitig -> "Guten Morgen"
+    combo_guten_morgen {
+      timeout-ms = <180>;
+      key-positions = <29 45>;
+      bindings = <&guten_morgen>;
+    };
 
     // Silben-Combos: erster+letzter Buchstabe der Silbe (bei Kollision
     // anderer markanter Buchstabe). 180ms Timeout wie oben, da unterschiedliche
@@ -225,6 +231,15 @@
       wait-ms = <5>;
       tap-ms = <5>;
       bindings = <&macro_tap &kp LS(V) &kp I &kp E &kp L &kp E &kp SPACE &kp LS(G) &kp R &kp LBKT &kp MINUS &kp E &kp RET>;
+    };
+
+    // "Guten Morgen" (Combo G+M), ohne Leerzeichen/Zeilenumbruch am Ende.
+    guten_morgen: guten_morgen {
+      compatible = "zmk,behavior-macro";
+      #binding-cells = <0>;
+      wait-ms = <5>;
+      tap-ms = <5>;
+      bindings = <&macro_tap &kp LS(G) &kp U &kp T &kp E &kp N &kp SPACE &kp LS(M) &kp O &kp R &kp G &kp E &kp N>;
     };
 
     // Silben-Makros (Suffixe/Praefixe), alle klein geschrieben, kein
