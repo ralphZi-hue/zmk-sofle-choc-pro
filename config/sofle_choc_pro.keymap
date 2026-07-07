@@ -63,6 +63,19 @@
       key-positions = <29 45>;
       bindings = <&guten_morgen>;
     };
+    // S (Pos 26) + B (Pos 41) gleichzeitig -> Bildschirmfoto Bereich (Cmd+Shift+4)
+    combo_screenshot_bereich {
+      timeout-ms = <180>;
+      key-positions = <26 41>;
+      bindings = <&kp LG(LS(N4))>;
+    };
+    // S (Pos 26) + F (Pos 28) gleichzeitig -> Bildschirmfoto Fenster
+    // (Cmd+Shift+4, dann Space; Fenster danach manuell mit der Maus anklicken)
+    combo_screenshot_fenster {
+      timeout-ms = <180>;
+      key-positions = <26 28>;
+      bindings = <&screenshot_fenster>;
+    };
 
     // Silben-Combos: erster+letzter Buchstabe der Silbe (bei Kollision
     // anderer markanter Buchstabe). 180ms Timeout wie oben, da unterschiedliche
@@ -241,6 +254,22 @@
       wait-ms = <5>;
       tap-ms = <5>;
       bindings = <&macro_tap &kp LS(G) &kp U &kp T &kp E &kp N &kp SPACE &kp LS(M) &kp O &kp R &kp G &kp E &kp N>;
+    };
+
+    // Bildschirmfoto Fenster (Combo S+F): Cmd+Shift halten, 4 und Space tippen,
+    // dann loslassen -- Cursor wird zur Kamera, Fenster danach manuell anklicken.
+    screenshot_fenster: screenshot_fenster {
+      compatible = "zmk,behavior-macro";
+      #binding-cells = <0>;
+      wait-ms = <5>;
+      tap-ms = <5>;
+      bindings
+        = <&macro_press &kp LGUI>
+        , <&macro_press &kp LSHFT>
+        , <&macro_tap &kp N4>
+        , <&macro_tap &kp SPACE>
+        , <&macro_release &kp LGUI>
+        , <&macro_release &kp LSHFT>;
     };
 
     // Silben-Makros (Suffixe/Praefixe), alle klein geschrieben, kein
