@@ -261,8 +261,11 @@
     screenshot_fenster: screenshot_fenster {
       compatible = "zmk,behavior-macro";
       #binding-cells = <0>;
-      wait-ms = <5>;
-      tap-ms = <5>;
+      // Deutlich laengere Pausen als bei den Text-Makros: macOS braucht Zeit,
+      // um intern in den Fenster-Auswahlmodus zu wechseln, bevor Space ankommt
+      // (mit 5ms blieb es im normalen Bereichs-Modus haengen).
+      wait-ms = <150>;
+      tap-ms = <20>;
       bindings
         = <&macro_press &kp LGUI>
         , <&macro_press &kp LSHFT>
