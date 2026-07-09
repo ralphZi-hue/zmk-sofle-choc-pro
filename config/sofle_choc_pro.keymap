@@ -63,6 +63,21 @@
       key-positions = <29 45>;
       bindings = <&guten_morgen>;
     };
+    // B (Pos 41) + E (Pos 15), erster+letzter Buchstabe -> "bitte " (mit Leerzeichen,
+    // da mitten im Satz getippt).
+    combo_bitte {
+      timeout-ms = <180>;
+      key-positions = <41 15>;
+      bindings = <&wort_bitte>;
+    };
+    // N (Pos 44) + H (Pos 30) -> "nicht " (mit Leerzeichen). T+N waere naheliegender
+    // (erster+letzter Buchstabe), ist aber schon durch combo_tion (Pos 17+44) belegt,
+    // deshalb H als markanter Ersatzbuchstabe (fuer den "ch"-Laut).
+    combo_nicht {
+      timeout-ms = <180>;
+      key-positions = <44 30>;
+      bindings = <&wort_nicht>;
+    };
 
     // Silben-Combos: erster+letzter Buchstabe der Silbe (bei Kollision
     // anderer markanter Buchstabe). 180ms Timeout wie oben, da unterschiedliche
@@ -241,6 +256,24 @@
       wait-ms = <5>;
       tap-ms = <5>;
       bindings = <&macro_tap &kp LS(G) &kp U &kp T &kp E &kp N &kp SPACE &kp LS(M) &kp O &kp R &kp G &kp E &kp N>;
+    };
+
+    // "bitte " (Combo B+E) und "nicht " (Combo N+H) -- beide mit Leerzeichen am Ende,
+    // da als Fuellwoerter mitten im Satz gedacht, im Gegensatz zu den Silben-Makros
+    // (die ohne Leerzeichen direkt anhaengen).
+    wort_bitte: wort_bitte {
+      compatible = "zmk,behavior-macro";
+      #binding-cells = <0>;
+      wait-ms = <5>;
+      tap-ms = <5>;
+      bindings = <&macro_tap &kp B &kp I &kp T &kp T &kp E &kp SPACE>;
+    };
+    wort_nicht: wort_nicht {
+      compatible = "zmk,behavior-macro";
+      #binding-cells = <0>;
+      wait-ms = <5>;
+      tap-ms = <5>;
+      bindings = <&macro_tap &kp N &kp I &kp C &kp H &kp T &kp SPACE>;
     };
 
     // Silben-Makros (Suffixe/Praefixe), alle klein geschrieben, kein
